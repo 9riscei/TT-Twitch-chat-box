@@ -36,14 +36,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Update Twitch chat URL
     function updateChat() {
-        const channel = channelInput.value.trim();
-        if (channel) {
-            // Construct the Twitch embed URL
-            const embedUrl = `https://www.twitch.tv/embed/${channel}/chat?parent=${window.location.hostname}`;
+        const input = channelInput.value.trim();
+
+        // Check if the input is a pop-out chat link
+        if (input.startsWith("https://www.twitch.tv/popout/")) {
+            // Extract the channel name from the pop-out link
+            const channel = input.split("/")[4]; // Extract the channel name
+            if (channel) {
+                // Construct the Twitch embed URL
+                const embedUrl = `https://www.twitch.tv/embed/${channel}/chat?parent=${window.location.hostname}`;
+                console.log("Twitch Embed URL:", embedUrl); // Debugging: Log the URL
+                twitchChat.src = embedUrl;
+            } else {
+                alert("Invalid pop-out chat link. Please check the URL.");
+            }
+        } else if (input) {
+            // If it's not a pop-out link, assume it's a channel name
+            const embedUrl = `https://www.twitch.tv/embed/${input}/chat?parent=${window.location.hostname}`;
             console.log("Twitch Embed URL:", embedUrl); // Debugging: Log the URL
             twitchChat.src = embedUrl;
         } else {
-            alert("Please enter a valid Twitch channel name.");
+            alert("Please enter a valid Twitch pop-out chat link or channel name.");
         }
     }
 
