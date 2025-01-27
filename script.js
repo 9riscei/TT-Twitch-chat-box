@@ -38,7 +38,12 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateChat() {
         const channel = channelInput.value.trim();
         if (channel) {
-            twitchChat.src = `https://www.twitch.tv/embed/${channel}/chat?parent=${window.location.hostname}`;
+            // Construct the Twitch embed URL
+            const embedUrl = `https://www.twitch.tv/embed/${channel}/chat?parent=${window.location.hostname}`;
+            console.log("Twitch Embed URL:", embedUrl); // Debugging: Log the URL
+            twitchChat.src = embedUrl;
+        } else {
+            alert("Please enter a valid Twitch channel name.");
         }
     }
 
@@ -50,6 +55,6 @@ document.addEventListener('DOMContentLoaded', function() {
         floatingWindow.style.opacity = this.value;
     });
 
-    // Initial chat load
-    updateChat();
+    // Initial chat load (optional)
+    // updateChat(); // Uncomment if you want to load a default channel on page load
 });
