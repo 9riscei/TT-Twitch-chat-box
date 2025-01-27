@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitch Chat Overlay</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div id="overlay">
+        <div id="floating-window">
+            <div id="header">
+                <button id="settings-btn">⚙️</button>
+            </div>
+            <div id="chat-container">
+                <iframe id="twitch-chat" src="" frameborder="0"></iframe>
+            </div>
+            <div id="controls">
+                <input type="text" id="channel-input" placeholder="Enter Twitch Channel">
+                <button id="refresh-btn">Refresh</button>
+                <input type="range" id="opacity-slider" min="0" max="1" step="0.1" value="1">
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
